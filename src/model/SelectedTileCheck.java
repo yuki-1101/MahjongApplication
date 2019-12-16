@@ -24,7 +24,7 @@ public class SelectedTileCheck {
 				instance = new ArrayList<String>();
 				instance.add(tehai);
 				this.tehaiList = instance;
-				int y = 3;
+
 			}
 		} else {
 			int i = Integer.parseInt(change);
