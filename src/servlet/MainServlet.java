@@ -31,11 +31,15 @@ public class MainServlet extends HttpServlet {
 		List<String>  selectedTileList = (List<String>) session.getAttribute("selectedTileList");
 
 		if(reset == null) {
-				stc.setTehai(tileName, change,selectedTileList);
-				selectedTileList = stc.getTehai();
-				session.setAttribute("selectedTileList", selectedTileList);
 
-				session.setAttribute("tsumo", tileName);
+					stc.setTehai(tileName, change, selectedTileList);
+					selectedTileList = stc.getTehai();
+					if(selectedTileList != null) {
+						session.setAttribute("selectedTileList", selectedTileList);
+					} else {
+						session.setAttribute("tsumo", tileName);
+					}
+
 		} else {
 			session.removeAttribute("selectedTileList");
 			session.removeAttribute("tsumo");
