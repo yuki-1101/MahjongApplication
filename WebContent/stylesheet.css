@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+.title{
+	text-align: center;
+	padding: 30px 0;
+	background-color: green;
+	color: white;
+	font-family: serif;
+}
+
+.tileGroup{
+	width: 600px;
+	margin: 0 auto;
+}
+
+.btnGroup{
+	width: 600px;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+.btnBlue{
+	 color: white;
+	 background-color: blue;
+	 width: 100px;
+	 height: 50px;
+	 border-radius: 20px;
+	 font-size: 14px;
+}
+
+.btnRed{
+	 color: white;
+	 background-color: red;
+	 width: 100px;
+	 height: 50px;
+	 border-radius: 20px;
+	 font-size: 14px;
+}
+
+.btnGreen{
+	 color: white;
+	 background-color: green;
+	 width: 100px;
+	 height: 50px;
+	 border-radius: 20px;
+	 font-size: 14px;
+}
+
+.tileMember{
+	text-align: center;
+	width: 50px;
+}
+
+.tileDisplay{
+	width: 600px;
+	margin: 0 auto;
+	display: flex;
+
+}
+
+ul{
+	display: flex;
+	list-style: none;
+	padding: 0;
+}
+
+li{
+	margin: 0 5px;
+	text-align: center;
+}
+
+.tileDisplay_tsumo{
+
+}
+
+.tsumoDisplay{
+	padding: 0;
+		margin: 0;
+		border: 2px solid red;
+}
+
