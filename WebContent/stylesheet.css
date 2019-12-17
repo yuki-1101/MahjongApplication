@@ -9,7 +9,7 @@
 }
 
 .tileGroup{
-	width: 600px;
+
 	margin: 0 auto;
 }
 
@@ -47,8 +47,8 @@
 }
 
 .tileMember{
-	text-align: center;
 	width: 50px;
+	text-align: center;
 }
 
 .tileDisplay{
