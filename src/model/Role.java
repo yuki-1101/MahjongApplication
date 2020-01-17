@@ -20,6 +20,7 @@ public class Role {
 		checkList.add(role.someteCheck(tehaiList));
 		checkList.add(role.toitoihoCheck(tehaiList));
 		checkList.add(role.chantaCheck(tehaiList));
+		checkList.add(role.ipeikouCheck(tehaiList));
 		role.insertList(roleList,checkList);
 		return roleList;
 	}
@@ -272,32 +273,102 @@ public class Role {
 	}
 
 	private String ipeikouCheck(List<String> tehaiList) {
+		//初期値
 		String name ="";
-		int manzuCnt = 0;
-		int souzuCnt = 0;
-		int pinzuCnt = 0;
-		for(int i = 0; i < tehaiList.size();i++) {
+		boolean manzuFlg = false;
+		boolean souzuFlg = false;
+		boolean pinzuFlg = false;
+
+		//手牌チェック
+		for(int i = 0; i < tehaiList.size(); i+=6) {
 			int num1 = Integer.parseInt(tehaiList.get(i));
 			int num2 = Integer.parseInt(tehaiList.get(i+1));
-			//字牌チェック
-			if((num1 % 10) != 4 && (num2 % 10) != 4) {
-				//隣の牌が同じ牌か比較する
-				if((num1 == num2) && (num1+2 == num2+2) && (num1+4 == num2+4)) {
+			int num3 = Integer.parseInt(tehaiList.get(i+2));
+			int num4 = Integer.parseInt(tehaiList.get(i+3));
+			int num5 = Integer.parseInt(tehaiList.get(i+4));
+			int num6 = Integer.parseInt(tehaiList.get(i+5));
 
-						//牌の種類を分ける
-						if((num1 / 10) == 1) {
-							//萬子にカウント1する
-							manzuCnt+=1;
-						} else if((num1 / 10) == 2) {
-							souzuCnt+=1;
-						} else {
-							pinzuCnt+=1;
-						}
-				} else {
-					//隣の牌が違う種類なら次の牌を確認する
-					i=+1;
+			//牌の種類を分ける
+			if(((num1 / 10) == 3)
+				&& ((num2 / 10) == 3)
+				&& ((num3 / 10) == 3)
+				&& ((num4 / 10) == 3)
+				&& ((num5 / 10) == 3)
+				&& ((num6 / 10) == 3)){
+					pinzuFlg = true;
+			} else if(((num1 / 10) == 2)
+				&& ((num2 / 10) == 2)
+				&& ((num3 / 10) == 2)
+				&& ((num4 / 10) == 2)
+				&& ((num5 / 10) == 2)
+				&& ((num6 / 10) == 2)) {
+					souzuFlg = true;
+			} else if(((num1 / 10) == 1)
+				&& ((num2 / 10) == 1)
+				&& ((num3 / 10) == 1)
+				&& ((num4 / 10) == 1)
+				&& ((num5 / 10) == 1)
+				&& ((num6 / 10) == 1)) {
+					manzuFlg = true;
+			} else if(((num1 / 10) == 4)
+				|| ((num2 / 10) == 4)
+				|| ((num3 / 10) == 4)
+				|| ((num4 / 10) == 4)
+				|| ((num5 / 10) == 4)
+				|| ((num6 / 10) == 4)){
+					break;
+			}
+			/*if(num1 == num2) { //対子か判定する
+				if((num1+1) == Integer.parseInt(tehaiList.get(i+2))
+				&& ((num1+1) == Integer.parseInt(tehaiList.get(i+3)))
+				&& ((num1+2) == Integer.parseInt(tehaiList.get(i+4)))
+				&& ((num1+2) == Integer.parseInt(tehaiList.get(i+5)))) {
+
 				}
-			}//字牌は一盃口にならないため次の牌を確認する
+				i+=2;
+				pinzuCnt+=1;
+			} else {
+				i+=1;
+			}*/
+
+			if(pinzuFlg) {
+				//対子かつ順子か判定する
+				if(((num1 == num2)
+				&& (num3 == num4)
+				&& (num5 == num6))
+				&& ((num1+1 == num3)
+				&& (num1+2 == num5))){
+
+				} else {
+					break;
+				}
+			}
+			if(souzuFlg) {
+				if(((num1 == num2)
+					&& (num3 == num4)
+					&& (num5 == num6))
+					&& ((num1+1 == num3)
+					&& (num1+2 == num5))){
+
+				} else {
+					break;
+				}
+			}
+			if(manzuFlg) {
+				if(((num1 == num2)
+					&& (num3 == num4)
+					&& (num5 == num6))
+					&& ((num1+1 == num3)
+					&& (num1+2 == num5))){
+
+				}
+			} else {
+				break;
+			}
+			//手牌が14牌あるかどうか
+			if(i >= tehaiList.size()-2){
+				name = "一盃口";
+			}
 		}
 		return name;
 	}
