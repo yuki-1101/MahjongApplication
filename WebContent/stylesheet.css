@@ -1,22 +1,83 @@
 @charset "UTF-8";
 
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	background-color: rgba(96,41,120,0.2);
+}
+
 .title{
 	text-align: center;
+
+
+}
+
+.innerBlack{
+	background-color: rgba(96,41,120,0.5);
 	padding: 30px 0;
-	background-color: green;
-	color: white;
-	font-family: serif;
+}
+
+h1{
+	font-size: 50px;
+	font-family:Times New Roman;
+	font-style: italic;
+	font-weight: bold;
+	color: red;
+	background: -webkit-linear-gradient(0deg, blue, pink, red);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.main{
+	width: 600px;
+	margin: 0 auto;
+}
+
+
+
+.mainBody{
+	display: flex;
+	justify-content: center;
+}
+
+.tileArea{
+	background-color: rgba(150, 150, 150, 0.5);
+	padding: 20px;
+	border-radius: 40px;
+	margin: 30px 100px 0 0;
+}
+
+.mathArea{
+	background-color: rgba(150, 150, 150, 0.5);
+	border-radius: 40px;
+	margin: 30px 0 0 0;
+	padding: 40px;
+	width: 100%;
+}
+
+th{
+	padding: 5px;
+	text-align: center;
+}
+
+td {
+	
+	padding: 5px;
+	text-align: center;
 }
 
 .tileGroup{
-
-	margin: 0 auto;
+	display: flex;
+	margin: 0px 50px 0px 10px auto;
 }
 
 .btnGroup{
 	width: 600px;
 	margin: 0 auto;
-	padding: 30px 0;
+	padding: 10px 0;
 }
 
 .btnBlue{
@@ -30,8 +91,8 @@
 
 .btnRed{
 	 color: white;
-	 background-color: red;
-	 width: 100px;
+	 background-color: rgba(96,41,120,1);
+	 width: 80px;
 	 height: 50px;
 	 border-radius: 20px;
 	 font-size: 14px;
@@ -47,8 +108,13 @@
 }
 
 .tileMember{
-	width: 50px;
+	margin: 0px 2px 0px 0px;
 	text-align: center;
+	width: 100%;
+}
+
+.tileMember:hover{
+	opacity: 0.5;
 }
 
 .tileDisplay{
@@ -56,6 +122,20 @@
 	margin: 0 auto;
 	display: flex;
 
+}
+
+.tileMember_tehai{
+	width: 37px;
+	height: 53.78px;
+}
+
+.tileDisplay_tsumo{
+
+}
+
+.tileMember_tsumo{
+	width: 37px;
+	height: 53.78px;
 }
 
 ul{
@@ -69,13 +149,15 @@ li{
 	text-align: center;
 }
 
-.tileDisplay_tsumo{
-
-}
-
-.tsumoDisplay{
-	padding: 0;
-		margin: 0;
-		border: 2px solid red;
+button {
+    width: 40px;
+    padding: 0;
+    margin: 2px;
+    background: yellow;
+    border:0;
+    font-size:0;
+    line-height:0;
+    overflow:visible;
+    cursor:pointer;
 }
 

@@ -1,7 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,60 +21,27 @@ public class MainServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
-		//セッションスコープから選択された牌のリストを取得する
+		//jspからの値をGetする
 		String tileName = request.getParameter("tileName");
 		String reset = request.getParameter("reset");
 		String change = request.getParameter("change");
 
+		//セッションスコープから選択された牌のリストを取得する
 		HttpSession session = request.getSession();
-		SelectedTileCheck stc = new SelectedTileCheck();
-		List<String>  selectedTileList = (List<String>) session.getAttribute("selectedTileList");
+		SelectedTileCheck  stc = (SelectedTileCheck) session.getAttribute("stc");
 
-		if(reset == null) {
-
-					stc.setTehai(tileName, change, selectedTileList);
-					selectedTileList = stc.getTehai();
-					if(selectedTileList != null) {
-						session.setAttribute("selectedTileList", selectedTileList);
-					} else {
-						session.setAttribute("tsumo", tileName);
-					}
-
-		} else {
-			session.removeAttribute("selectedTileList");
-			session.removeAttribute("tsumo");
+		if(stc == null) {
+			stc = new SelectedTileCheck();
 		}
 
-		/*if(reset == null) { //リセット処理するか否かの条件式
+		if(reset == null) {
+			stc.setTehai(tileName, change);
+			Collections.sort(stc.getTehaiImageList());
+			session.setAttribute("stc", stc);
 
-			if(change != null) {
-				int i = Integer.parseInt(change);
-				stp.setTehai(tileName);
-				selectedTileList.set(i, stp.getTehai());
-				session.setAttribute("selectedTileList", selectedTileList);
-
-			} else {
-
-				if(stc.instanceCheck(selectedTileList)) {  //インスタンスの状態の確認(要素数が13以下で値がnullかのチェック)
-					stp.setTehai(tileName);
-					selectedTileList.add(stp.getTehai());
-
-				} else if(selectedTileList == null){
-					Set<String> words = new TreeSet<String>();
-					stp.setTehai(tileName);
-					selectedTileList.add(stp.getTehai());
-					session.setAttribute("selectedTileList", selectedTileList);
-
-				} else {
-					session.setAttribute("tsumo", tileName);
-
-				}
-			}
 		} else {
-			session.removeAttribute("selectedTileList");
-			session.removeAttribute("tsumo");
-
-		}*\
+			session.removeAttribute("stc");
+		}
 
 		/*フォワード*/
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");

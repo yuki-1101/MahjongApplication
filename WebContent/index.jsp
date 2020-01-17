@@ -6,82 +6,120 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>符計算アプリ(仮)</title>
+<title>Tile Caluculator</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/stylesheet.css">
 </head>
-<body>
-	<h1 class="title">符計算アプリ(仮)</h1>
-
-	<div class="parent">
-		<div class="main">
-			ここはメインページ
-			<form action="./MainServlet" method="post"  class="tileGroups">
-				<div class="tileGroup">
-					<input type="image" src="image/1m.png" alt="" name="tileName"  value="0" class="tileMember">
-					<input type="image" src="image/2m.png" alt="" name="tileName"  value="1" class="tileMember">
-					<input type="image" src="image/3m.png" alt="" name="tileName"  value="2" class="tileMember">
-					<input type="image" src="image/4m.png" alt="" name="tileName"  value="3" class="tileMember">
-					<input type="image" src="image/5m.png" alt="" name="tileName"  value="4" class="tileMember">
-					<input type="image" src="image/6m.png" alt="" name="tileName"  value="5" class="tileMember">
-					<input type="image" src="image/8m.png" alt="" name="tileName"  value="6" class="tileMember">
-					<input type="image" src="image/7m.png" alt="" name="tileName"  value="7" class="tileMember">
-					<input type="image" src="image/9m.png" alt="" name="tileName"  value="8" class="tileMember">
-				</div>
-				<div class="tileGroup">
-					<input type="image" src="image/1s.png" alt="" name="tileName"  value="9" class="tileMember">
-					<input type="image" src="image/2s.png" alt="" name="tileName"  value="10" class="tileMember">
-					<input type="image" src="image/3s.png" alt="" name="tileName"  value="11" class="tileMember">
-					<input type="image" src="image/4s.png" alt="" name="tileName"  value="12" class="tileMember">
-					<input type="image" src="image/5s.png" alt="" name="tileName"  value="13" class="tileMember">
-					<input type="image" src="image/6s.png" alt="" name="tileName"  value="14" class="tileMember">
-					<input type="image" src="image/7s.png" alt="" name="tileName"  value="15" class="tileMember">
-					<input type="image" src="image/8s.png" alt="" name="tileName"  value="16" class="tileMember">
-					<input type="image" src="image/9s.png" alt="" name="tileName"  value="17" class="tileMember">
-				</div>
-				<div class="tileGroup">
-					<input type="image" src="image/1p.png" alt="" name="tileName"  value="18" class="tileMember">
-					<input type="image" src="image/2p.png" alt="" name="tileName"  value="19" class="tileMember">
-					<input type="image" src="image/3p.png" alt="" name="tileName"  value="20" class="tileMember">
-					<input type="image" src="image/4p.png" alt="" name="tileName"  value="21" class="tileMember">
-					<input type="image" src="image/5p.png" alt="" name="tileName"  value="22" class="tileMember">
-					<input type="image" src="image/6p.png" alt="" name="tileName"  value="23" class="tileMember">
-					<input type="image" src="image/7p.png" alt="" name="tileName"  value="24" class="tileMember">
-					<input type="image" src="image/8p.png" alt="" name="tileName"  value="25" class="tileMember">
-					<input type="image" src="image/9p.png" alt="" name="tileName"  value="26" class="tileMember">
-				</div>
-				<div class="tileGroup">
-					<input type="image" src="image/ton.png" alt="" name="tileName" value="27" class="tileMember">
-					<input type="image" src="image/nan.png" alt="" name="tileName" value="28" class="tileMember tileMember_south">
-					<input type="image" src="image/sya.png" alt="" name="tileName" value="29" class="tileMember tileMember_west">
-					<input type="image" src="image/pe.png" alt="" name="tileName" value="30" class="tileMember tileMember_north">
-					<input type="image" src="image/haku.png" alt="" name="tileName" value="31" class="tileMember">
-					<input type="image" src="image/hatu.png" alt="" name="tileName" value="32" class="tileMember tileMember_green">
-					<input type="image" src="image/tyun.png" alt="" name="tileName" value="33" class="tileMember tileMember_red">
-				</div>
-				<div class="btnGroup">
-					<input type="submit" name="reset" value="リセット" class="btnRed">
-				</div>
-				<div class="tileDisplay">
-					<ul>
-
-						<c:forEach var="value" items="${selectedTileList}" varStatus="status">
-							<li>${value}<br><input type="radio" name="change" value="${status.index}"></li>
-						</c:forEach>
-
-					</ul>
-					<ul class="tileDisplay_tsumo">
-
-							<li>${tsumo}<br>ツモ</li> <%-- セッションスコープに保存されたインスタンスをJSTLで呼ぶときはキーを使うこと  --%>
-
-					</ul>
-				</div>
-			</form>
+<body class="body" style="background-image: url(image/top6.jpg);">
+	<div class="title" style="background-image: url(image/top3.png);">
+		<div class="innerBlack">
+			<h1>Tile Caluculator</h1>
 		</div>
 
-		<div class="point">
-			ここに点数を入れる。
-		</div>
 	</div>
+
+	<div class="main">
+		<form action="./MainServlet" method="post" class="tileGroups">
+			<div class="mainBody">
+				<div class="tileArea">
+					<div class="tileGroup">
+						<button type="submit" name="tileName" value="11"><img src="image/011m.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="12"><img src="image/012m.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="13"><img src="image/013m.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="14"><img src="image/014m.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="15"><img src="image/015m.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="16"><img src="image/016m.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="17"><img src="image/017m.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="18"><img src="image/018m.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="19"><img src="image/019m.png" alt="" class="tileMember"></button>
+					</div>
+					<div class="tileGroup">
+						<button type="submit" name="tileName" value="21"><img src="image/101s.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="22"><img src="image/102s.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="23"><img src="image/103s.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="24"><img src="image/104s.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="25"><img src="image/105s.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="26"><img src="image/106s.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="27"><img src="image/107s.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="28"><img src="image/108s.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="29"><img src="image/109s.png" alt="" class="tileMember"></button>
+					</div>
+					<div class="tileGroup">
+						<button type="submit" name="tileName" value="31"><img src="image/111p.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="32"><img src="image/112p.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="33"><img src="image/113p.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="34"><img src="image/114p.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="35"><img src="image/115p.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="36"><img src="image/116p.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="37"><img src="image/117p.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="38"><img src="image/118p.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="39"><img src="image/119p.png" alt="" class="tileMember"></button>
+					</div>
+					<div class="tileGroup">
+						<button type="submit" name="tileName" value="41"><img src="image/121ton.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="42"><img src="image/122nan.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="43"><img src="image/123sya.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="44"><img src="image/124pe.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="45"><img src="image/125haku.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="46"><img src="image/126hatu.png" alt="" class="tileMember"></button>
+						<button type="submit" name="tileName" value="47"><img src="image/127tyun.png" alt="" class="tileMember"></button>
+					</div>
+				</div>
+				<div class="mathArea">
+					<table border="1">
+						<tr>
+							<th noWrap>点数</th>
+							<td>18000</td>
+						</tr>
+						<tr>
+							<th>役</th>
+							<td>
+								<c:forEach var="value" items="${stc.getRoleName()}">
+									${value}
+								</c:forEach>
+							</td>
+						</tr>
+						<tr>
+							<th>符</th>
+							<td>30符</td>
+						</tr>
+						<tr>
+							<th>翻</th>
+							<td></td>
+						</tr>
+
+					</table>
+
+				</div>
+			</div>
+
+			<div class="btnGroup">
+				<input type="submit" name="reset" value="リセット" class="btnRed">
+				<input type="submit" name="reset" value="リセット" class="btnRed">
+				<input type="submit" name="reset" value="リセット" class="btnRed">
+				<input type="submit" name="reset" value="リセット" class="btnRed">
+				<input type="submit" name="reset" value="リセット" class="btnRed">
+				<input type="submit" name="reset" value="リセット" class="btnRed">
+				<input type="submit" name="reset" value="リセット" class="btnRed">
+			</div>
+			<div class="tileDisplay">
+				<ul>
+					<c:forEach var="value" items="${stc.getTehaiImageList()}" varStatus="status">
+						<li><img src="${value}" alt="" class="tileMember_tehai"><br><input type="radio" name="change" value="${status.index}"></li>
+					</c:forEach>
+				</ul>
+				<ul class="tileDisplay_tsumo">
+					<c:if test="${stc.getTsumo() != null}">
+						<li><img src="${stc.getTsumo()}" alt="" class="tileMember_tsumo"><br>ツモ</li> <%-- セッションスコープに保存されたインスタンスをJSTLで呼ぶときはキーを使うこと  --%>
+					</c:if>
+				</ul>
+			</div>
+		</form>
+	</div>
+
+
+
+
+
 
 
 
